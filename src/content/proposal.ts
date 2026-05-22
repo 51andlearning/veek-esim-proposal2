@@ -16,7 +16,7 @@ export const executiveSummary = {
     { value: "12%", label: "Peak attach rate by Yr 5" },
   ],
   touchpoints: {
-    title: "Leverage your full airline footprint",
+    title: "Leverage your full Veek footprint",
     body: "Monetise every existing passenger touchpoint — no new channels required.",
     items: [
       "Booking flow",
@@ -34,7 +34,7 @@ export const executiveSummary = {
 export const proposition = {
   title: "Your-branded, itinerary-aware travel eSIM",
   subtitle:
-    "Stay connected through your airline's app. Plans pre-selected for the passenger's destination — with loyalty points earned on purchase and redeemable on future travel.",
+    "Stay connected through your Veek app. Plans pre-selected for the passenger's destination — with loyalty points earned on purchase and redeemable on future travel.",
   pillars: [
     {
       title: "Itinerary-aware",
@@ -99,7 +99,7 @@ export const businessCase = {
   title: "Business Case",
   parameters: [
     { label: "Bundle", value: "5 GB · $18.07 ARPU (ex VAT)" },
-    { label: "Airline share", value: "over 8% of revenue to airline" },
+    { label: "Veek share", value: "over 8% of revenue to Veek" },
     { label: "Target market", value: "1.0M pax in 2026 · +5% p.a." },
   ],
   attachRates: {
@@ -122,7 +122,7 @@ export const businessCase = {
       ["Yr 5", "54,698", "97,241", "145,861"],
     ],
   },
-  airlineRevenue: {
+  veekRevenue: {
     headers: ["Year", "Worst ($M)", "Base ($M)", "Best ($M)"],
     rows: [
       ["Yr 1", "0.03", "0.04", "0.07"],
@@ -139,7 +139,7 @@ export const financials = {
   title: "Financial Projections",
   headline: {
     revenue: "Up to $8.55M subscriber revenue over 5 years",
-    net: "Up to $0.68M Airline net over 5 years",
+    net: "Up to $0.68M Veek net over 5 years",
   },
   revenue: {
     headers: ["Year", "Worst ($M)", "Base ($M)", "Best ($M)"],

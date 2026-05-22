@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 
 const ARPU = 18.07; // $ per 5GB bundle (ex VAT)
-const AIRLINE_SHARE = 0.08; // 8% of subscriber revenue
+const VEEK_SHARE = 0.08; // 8% of subscriber revenue
 
 function formatUSD(n: number) {
   if (n >= 1_000_000_000) return `$${(n / 1_000_000_000).toFixed(2)}B`;
@@ -20,11 +20,11 @@ export default function Calculator() {
   const [passengers, setPassengers] = useState(1_000_000);
   const [uptake, setUptake] = useState(5); // percent
 
-  const { subscribers, revenue, airlineNet } = useMemo(() => {
+  const { subscribers, revenue, veekNet } = useMemo(() => {
     const subs = passengers * (uptake / 100);
     const rev = subs * ARPU;
-    const airline = rev * AIRLINE_SHARE;
-    return { subscribers: subs, revenue: rev, airlineNet: airline };
+    const veek = rev * VEEK_SHARE;
+    return { subscribers: subs, revenue: rev, veekNet: veek };
   }, [passengers, uptake]);
 
   return (
@@ -130,7 +130,7 @@ export default function Calculator() {
               <div className="font-medium text-slate-700">Assumptions (fixed):</div>
               <ul className="mt-2 space-y-1">
                 <li>• ARPU per 5 GB bundle: <span className="tabular-nums text-slate-700">${ARPU.toFixed(2)}</span> (ex VAT)</li>
-                <li>• Airline revenue share: <span className="tabular-nums text-slate-700">from {(AIRLINE_SHARE * 100).toFixed(0)}%</span></li>
+                <li>• Veek revenue share: <span className="tabular-nums text-slate-700">from {(VEEK_SHARE * 100).toFixed(0)}%</span></li>
               </ul>
             </div>
           </div>
@@ -163,13 +163,13 @@ export default function Calculator() {
               </div>
               <div className="rounded-2xl bg-[#0369A1] p-8 text-white">
                 <div className="text-xs font-medium uppercase tracking-[0.2em] text-white/75">
-                  Airline net annual revenue
+                  Veek net annual revenue
                 </div>
                 <div className="mt-3 text-4xl font-semibold tracking-tight tabular-nums md:text-5xl">
-                  {formatUSD(airlineNet)}
+                  {formatUSD(veekNet)}
                 </div>
                 <div className="mt-2 text-sm text-white/75 tabular-nums">
-                  {formatUSD(revenue)} × {(AIRLINE_SHARE * 100).toFixed(0)}%
+                  {formatUSD(revenue)} × {(VEEK_SHARE * 100).toFixed(0)}%
                 </div>
               </div>
             </div>
