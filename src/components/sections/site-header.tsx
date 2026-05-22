@@ -15,7 +15,7 @@ export default function SiteHeader() {
         <a href="/" className="flex items-center gap-3 text-[#0F172A]">
           <div className="flex flex-col items-start leading-none">
             <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
-              Prepared by
+              Prepared for
             </span>
             <Image
               src="/images/veek-logo.svg"
