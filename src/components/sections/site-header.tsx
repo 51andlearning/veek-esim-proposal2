@@ -26,7 +26,7 @@ export default function SiteHeader() {
             className="hidden h-8 w-px bg-slate-200 sm:block"
           />
           <span className="hidden text-[10px] font-medium uppercase tracking-wider text-slate-400 sm:inline-block">
-            Prepared for
+            Prepared by
           </span>
           <span
             aria-hidden
