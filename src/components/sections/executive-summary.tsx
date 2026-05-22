@@ -31,7 +31,7 @@ export default function ExecutiveSummary() {
         </div>
         <h2 className="mt-5 max-w-3xl text-4xl font-semibold tracking-tight md:text-5xl">
           Travel eSIM is a {" "}
-          <span className="text-[#38bdf8]">$4.4B opportunity</span> hiding inside your existing passenger journey.
+          <span className="text-[#38bdf8]">$4.4B opportunity</span> hiding inside your existing customer journey.
         </h2>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
           A branded, itinerary-aware travel eSIM integrated across every touchpoint — with loyalty earn and burn.
