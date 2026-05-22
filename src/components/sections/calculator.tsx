@@ -43,6 +43,9 @@ export default function Calculator() {
           Adjust passenger volume and attach rate to see the revenue impact for
           a 5 GB travel eSIM bundle.
         </p>
+        <p className="mt-3 text-sm font-medium text-slate-500">
+          $2,500 platform set up fee
+        </p>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr]">
           {/* Inputs */}
