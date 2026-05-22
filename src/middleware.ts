@@ -1,50 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Site-wide HTTP Basic Auth.
+ * Site-wide password gate.
  *
- * Set these env vars in Vercel → Project → Settings → Environment Variables:
- *   SITE_USERNAME  (optional, default: "travel")
- *   SITE_PASSWORD  (required; if unset, site is open)
+ * Set SITE_PASSWORD in Vercel → Project → Settings → Environment Variables.
+ * If unset, the site is open.
  *
- * Once set, visitors get a browser auth prompt. Credentials persist per tab.
+ * Visitors without a valid `veek-auth` cookie are redirected to /login.
  */
 export function middleware(req: NextRequest) {
-  const expectedPassword = process.env.SITE_PASSWORD;
+  const expected = process.env.SITE_PASSWORD;
+  if (!expected) return NextResponse.next();
 
-  // If no password is configured, let everything through.
-  if (!expectedPassword) return NextResponse.next();
-
-  const expectedUsername = process.env.SITE_USERNAME ?? "travel";
-  const header = req.headers.get("authorization");
-
-  if (header?.startsWith("Basic ")) {
-    try {
-      // atob is available in the Edge runtime; Buffer is not.
-      const decoded = atob(header.slice(6));
-      const idx = decoded.indexOf(":");
-      const user = idx >= 0 ? decoded.slice(0, idx) : decoded;
-      const pass = idx >= 0 ? decoded.slice(idx + 1) : "";
-
-      if (user === expectedUsername && pass === expectedPassword) {
-        return NextResponse.next();
-      }
-    } catch {
-      // malformed header — fall through to 401
-    }
+  const cookie = req.cookies.get("veek-auth")?.value;
+  if (cookie && cookie === expected) {
+    return NextResponse.next();
   }
 
-  return new NextResponse("Authentication required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="Travel eSIM Proposal", charset="UTF-8"',
-    },
-  });
+  const url = req.nextUrl.clone();
+  url.pathname = "/login";
+  url.search = "";
+  if (req.nextUrl.pathname !== "/" && req.nextUrl.pathname !== "/login") {
+    url.searchParams.set("next", req.nextUrl.pathname + req.nextUrl.search);
+  }
+  return NextResponse.redirect(url);
 }
 
-// Apply to everything except Next internals and static assets.
+// Apply to everything except Next internals, static assets, the login page, and the login API.
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|woff|woff2|ttf|otf|txt|xml)).*)",
+    "/((?!login|api/login|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|woff|woff2|ttf|otf|txt|xml)).*)",
   ],
 };
