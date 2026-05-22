@@ -12,20 +12,22 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
-        <a href="/" className="flex items-center gap-3 text-[#0F172A]">
-          <div className="flex flex-col items-start leading-none">
-            <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
-              Prepared for
-            </span>
-            <Image
-              src="/images/veek-logo.svg"
-              alt="Veek"
-              width={320}
-              height={120}
-              priority
-              className="mt-1 h-7 w-auto"
-            />
-          </div>
+        <a href="/" className="flex items-center gap-4 text-[#0F172A]">
+          <Image
+            src="/images/veek-logo.svg"
+            alt="Veek"
+            width={320}
+            height={120}
+            priority
+            className="h-9 w-auto"
+          />
+          <span
+            aria-hidden
+            className="hidden h-8 w-px bg-slate-200 sm:block"
+          />
+          <span className="hidden text-[10px] font-medium uppercase tracking-wider text-slate-400 sm:inline-block">
+            Prepared for
+          </span>
           <span
             aria-hidden
             className="hidden h-8 w-px bg-slate-200 sm:block"
