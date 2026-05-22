@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Veek Travel eSIM — Proposal Site
 
-## Getting Started
+A standalone, password-protected proposal website that presents a **Travel eSIM** opportunity for **Veek** — Brazil's digital-first MVNO. Branded in Veek's CI, written in English, sized against Veek's 5M MVNO customer base with a 10–20% annual penetration target.
 
-First, run the development server:
+## What's in this repo
+
+| Path | What it is |
+|------|------------|
+| `proposal-veek-esim.md` | Canonical long-form proposal narrative (the source-of-truth text). |
+| `src/content/proposal.ts` | Structured content consumed by the React sections. |
+| `src/components/sections/` | Modular page sections (Hero, Business Case, etc.). |
+| `src/app/` | Next.js App Router entry points. |
+| `docs/` | Project documentation — scope, structure, assumptions, brand, deployment, tracking. |
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+pnpm start
+```
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Vercel auto-deploys `main`. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for project setup, env vars, password protection, and custom-domain steps.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Docs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [docs/PROJECT_OVERVIEW.md](docs/PROJECT_OVERVIEW.md) — what this is and who it's for
+- [docs/SCOPE.md](docs/SCOPE.md) — pages, sections, and what's explicitly excluded
+- [docs/STRUCTURE.md](docs/STRUCTURE.md) — folder layout and section composition rules
+- [docs/ASSUMPTIONS.md](docs/ASSUMPTIONS.md) — directional caveats and validation list
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — GitHub + Vercel setup, env vars, contact form
+- [docs/TRACKING_PLAN.md](docs/TRACKING_PLAN.md) — analytics, events, LGPD posture
+- [docs/BRAND.md](docs/BRAND.md) — Veek CI tokens, voice, do's and don'ts
 
-## Deploy on Vercel
+## Confidentiality
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This proposal is confidential to Veek and the MVNE partner. The deployed site **must be password-protected** before any external URL is shared. See `docs/DEPLOYMENT.md` for the env-var-driven HTTP Basic Auth approach.

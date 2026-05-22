@@ -20,7 +20,7 @@ The home page is composed of modular sections under `src/components/sections/`:
 - Timeline & Milestones
 - Other Opportunities — adjacent revenue lines
 - Call to Action / Next Steps
-- Footer (confidentiality + Veek / MVNE marks)
+- Footer (confidentiality + Veek/MVNE marks)
 
 ## Explicitly excluded
 - Creative production (in-app artwork, video, copy variants)
@@ -32,7 +32,7 @@ The home page is composed of modular sections under `src/components/sections/`:
 - Procurement of eSIM connectivity partners (handled separately by MVNE)
 
 ## Launch milestones
-1. **M1 — Scaffold complete:** Project created, shadcn primitives installed, docs drafted. *(current)*
+1. **M1 — Scaffold complete:** Project created, shadcn primitives installed, docs drafted in Veek CI. *(current)*
 2. **M2 — Content draft:** All sections populated with Veek-specific copy and the 5M / 10–20% business case.
 3. **M3 — Veek stakeholder review:** Internal Veek review pass, feedback cycle.
 4. **M4 — Deploy preview:** Published to a password-protected Vercel preview URL for joint review.

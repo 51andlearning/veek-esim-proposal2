@@ -5,7 +5,7 @@ A standalone proposal website that presents a **Travel eSIM** opportunity for **
 
 ## Why Veek
 - Veek is positioned as "the only operator that offers FREE internet" — a brand built on simplicity, transparency, and a 100% digital activation flow.
-- Veek runs as an MVNO on TIM's network with an existing base of **~5 million customers**.
+- Veek runs as an MVNO on TIM's network with an existing base of ~5M customers.
 - Outbound international travel from Brazil is a large, underserved opportunity for an MVNO whose customers already trust Veek for their primary line.
 - A travel eSIM is a natural extension of the Veek app and the Gigacoins economy.
 
@@ -17,16 +17,13 @@ A standalone proposal website that presents a **Travel eSIM** opportunity for **
 
 ## Deployment environment
 - **Hosting:** Vercel
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4 + shadcn UI primitives
+- **Framework:** Next.js (App Router)
 - **Runtime:** Node.js (Vercel managed)
-- **Package manager:** pnpm
 - **Domain:** TBD (custom Veek-aligned subdomain optional post-approval)
 
 ## Language
-- **Primary language:** English (proposal is authored for the joint Veek + MVNE working group).
-- Portuguese localisation is out of scope for v1.
+- **Primary language:** English (proposal is authored for the joint Veek + MVNE working group)
+- Portuguese translation is out of scope for v1.
 
 ## Owner
 - **Project owner:** TBD (Veek product sponsor)
@@ -34,4 +31,4 @@ A standalone proposal website that presents a **Travel eSIM** opportunity for **
 - **Content owner:** TBD
 
 ## Status
-Initial scaffold. Sections and copy to be populated after stakeholder alignment on the assumptions in `ASSUMPTIONS.md`.
+Initial build. Content reflects the directional proposal pending validation of customer-base figures, ARPU, and commercial split with Veek.

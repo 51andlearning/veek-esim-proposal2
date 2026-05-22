@@ -1,14 +1,14 @@
 # Deployment
 
 ## GitHub repo setup
-1. Create a new GitHub repository (**private** — this proposal is confidential to Veek and the MVNE partner).
+1. Create a new GitHub repository (private — this proposal is confidential to Veek and the MVNE partner).
 2. From the project root:
    ```bash
    git init
    git add .
-   git commit -m "Initial build: veek-esim-proposal"
+   git commit -m "Initial build: veek travel-esim proposal"
    git branch -M main
-   git remote add origin git@github.com:<org>/veek-esim-proposal.git
+   git remote add origin git@github.com:<org>/veek-travel-esim-proposal.git
    git push -u origin main
    ```
 3. Protect `main` (PRs + passing build required) once collaborators are added.
@@ -16,12 +16,12 @@
 ## Vercel project setup
 1. In the Vercel dashboard, **Add New → Project** and import the GitHub repo.
 2. Framework preset: **Next.js** (auto-detected).
-3. Root directory: **project root** (leave default — repo root equals project root).
+3. Root directory: **project root** (leave default if repo root equals project root).
 4. Install command: `pnpm install`
 5. Build command: `pnpm build`
 6. Output directory: **leave blank** (Next.js handles this).
 7. Node.js version: leave default (Vercel-managed).
-8. Project name suggestion: `veek-esim-proposal` so the default Vercel URL is recognisable to reviewers.
+8. Project name suggestion: `veek-travel-esim-proposal` so the default Vercel URL is recognisable to reviewers.
 
 ## Root directory rules
 - The repo root IS the Next.js project root.
@@ -45,18 +45,26 @@ Manage via **Vercel → Project → Settings → Environment Variables**. Never 
 Add more as features land. Mirror them in a local `.env.local` (gitignored) for development.
 
 ## Password protection
-The site ships with HTTP Basic Auth via **`src/proxy.ts`** (Next.js 16's replacement for the deprecated `middleware` convention). It is currently **active on production**.
+The site ships with HTTP Basic Auth via `src/middleware.ts`. Because this proposal is confidential to Veek and the MVNE partner, **password protection should be enabled before the URL is shared externally**.
 
-How it works:
-1. If `SITE_PASSWORD` is unset, the proxy is a no-op and the site is fully open.
-2. If `SITE_PASSWORD` is set, every request outside `_next/static`, `_next/image`, and `/favicon.ico` is challenged with HTTP Basic Auth.
-3. The username defaults to `veek` (override via `SITE_USERNAME`).
+1. Vercel → Project → Settings → Environment Variables
+2. Add `SITE_PASSWORD` (and optionally `SITE_USERNAME`) for Production + Preview
+3. Redeploy (or wait for next push) — browser will prompt for credentials on every visit
+4. To remove protection, delete `SITE_PASSWORD` and redeploy
 
-To disable: delete `SITE_PASSWORD` from Vercel → Settings → Environment Variables and redeploy.
+For team-scale access control (SSO, audit logs) consider Vercel's built-in Deployment Protection on the Pro plan instead.
 
-To rotate the password: update `SITE_PASSWORD` in the dashboard and redeploy. Sensitive env vars cannot be read back once set, only overwritten.
+## Contact form (FormSubmit)
+The "Request a working session" CTA opens a modal form that POSTs to `/api/contact`, which forwards to `https://formsubmit.co/ajax/edwardw@mvne.co.za`. **No API key, no env var, no Vercel config.**
 
-For team-scale access control (SSO, audit logs) consider Vercel Deployment Protection on the Pro plan as an alternative.
+### One-time activation
+The first time the form is submitted on production, FormSubmit emails `edwardw@mvne.co.za` an "Activate Form" link. Click that link once. From then on, every submission is delivered straight to his inbox.
+
+### Changing the recipient
+Edit `TO_EMAIL` in `src/app/api/contact/route.ts` and push. The new address will need to repeat the one-time activation.
+
+### Upgrading deliverability later
+If submissions start landing in spam or volume exceeds FormSubmit's free limits, swap the implementation in `route.ts` to a transactional email service (Resend, SendGrid, Postmark) — straightforward refactor, the front-end stays the same.
 
 ## How to redeploy
 - **Automatic:** Every push to `main` triggers a production deploy. Every PR gets its own preview deploy.
