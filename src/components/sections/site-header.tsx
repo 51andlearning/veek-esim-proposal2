@@ -13,6 +13,23 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
         <a href="/" className="flex items-center gap-3 text-[#0F172A]">
+          <div className="flex flex-col items-start leading-none">
+            <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
+              Prepared by
+            </span>
+            <Image
+              src="/images/veek-logo.svg"
+              alt="Veek"
+              width={320}
+              height={120}
+              priority
+              className="mt-1 h-7 w-auto"
+            />
+          </div>
+          <span
+            aria-hidden
+            className="hidden h-8 w-px bg-slate-200 sm:block"
+          />
           <Image
             src="/images/mvne-logo.png"
             alt="MVNE"
