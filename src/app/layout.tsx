@@ -7,10 +7,25 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteTitle = "Veek · Travel eSIM Opportunity";
+const siteDescription =
+  "Your-branded, itinerary-aware travel eSIM with loyalty earn and burn.";
+
 export const metadata: Metadata = {
-  title: "Travel eSIM Opportunity · MVNE",
-  description:
-    "Your-branded, itinerary-aware travel eSIM with loyalty earn and burn.",
+  metadataBase: new URL("https://veek-esim-proposal2.vercel.app"),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: "website",
+    siteName: "Veek",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
